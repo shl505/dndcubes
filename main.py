@@ -6,7 +6,8 @@ from PySide6.QtWidgets import (QCheckBox,
                                QVBoxLayout,
                                QMainWindow,
                                QComboBox,
-                               QWidget)
+                               QWidget,
+                               QLineEdit)
 from PySide6.QtCore import QSize
 import PySide6.QtGui
 
@@ -27,13 +28,14 @@ class MainWindow(QMainWindow):
         self.combobox2 = QComboBox()
         self.advantage_checkbox = QCheckBox(text="advantage")
         self.disadvantage_checkbox = QCheckBox(text="disadvantage")
-
+        self.lineedit = QLineEdit()
+        self.lineedit.setMaxLength(10)
+        self.lineedit.setPlaceholderText("Enter a number to plus")
 
         # יצירת חיבורים לפונקציות
         self.button.clicked.connect(self.greetings)
         self.advantage_checkbox.stateChanged.connect(self.advantagef)
-
-
+        self.lineedit.textEdited.connect(self.entered_number)
 
         self.combobox1.addItems(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'])
         self.combobox2.addItems(['4', '6', '8', '10', '12', '20', '100'])
@@ -44,13 +46,12 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.combobox2)
         layout.addWidget(self.advantage_checkbox)
         layout.addWidget(self.disadvantage_checkbox)
+        layout.addWidget(self.lineedit)
         layout.addWidget(self.button)
         widget = QWidget()
         widget.setLayout(layout)
 
         self.setCentralWidget(widget)
-
-
 
     # Greets the user
     def greetings(self):
@@ -60,10 +61,13 @@ class MainWindow(QMainWindow):
         if self.advantage_checkbox.isChecked() and (self.advantage_or_disadvantage != "False"):
             self.advantage_or_disadvantage = "True"
 
-
     def disadvantagef(self):
         if self.disadvantage_checkbox.isChecked() and (self.advantage_or_disadvantage != "True"):
             self.advantage_or_disadvantage = "False"
+
+    def entered_number(self):
+        self.plus_number = int(self.lineedit.text())
+        print(self.plus_number)
 
 
 if __name__ == '__main__':
