@@ -9,7 +9,9 @@ class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
-        self.advantage1 = False
+        self.advantage_or_disadvantage = None
+        self.advantage = False
+        self.disadvantage = False
         # Create widgets
         self.button = QPushButton("roll")
         self.lable = QLabel('d')
@@ -22,7 +24,7 @@ class MainWindow(QMainWindow):
         disadvantage_checkbox = QCheckBox(text="disadvantage")
         combobox1.addItems(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'])
         combobox2.addItems(['4', '6', '8', '10', '12', '20', '100'])
-        self.advantage_checkbox.stateChanged.connect(self.advantage)
+
         layout.addWidget(combobox1)
         layout.addWidget(self.lable)
         layout.addWidget(combobox2)
@@ -31,6 +33,7 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.button)
         widget = QWidget()
         widget.setLayout(layout)
+        self.advantage_checkbox.stateChanged.connect(self.advantagef)
         self.setCentralWidget(widget)
 
 
@@ -39,10 +42,15 @@ class MainWindow(QMainWindow):
     def greetings(self):
         print("Hello")
 
-    def advantage(self):
-        self.advantage1 = not self.advantage1
-        if self.advantage1 == True:
-            print("advantage")
+    def advantagef(self):
+        self.advantage = not self.advantage
+        if self.advantage == True:
+            self.advantage_or_disadvantage = True
+
+    def disadvantagef(self):
+        self.disadvantage = not self.advantage1
+        if self.advantage == True:
+            self.advantage_or_disadvantage = False
 
 
 if __name__ == '__main__':
