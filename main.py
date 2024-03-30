@@ -33,7 +33,7 @@ class MainWindow(QMainWindow):
         self.lineedit.setPlaceholderText("Enter a number to plus")
 
         # יצירת חיבורים לפונקציות
-        self.button.clicked.connect(self.greetings)
+        self.button.clicked.connect(self.roller)
         self.advantage_checkbox.stateChanged.connect(self.advantagef)
         self.lineedit.textEdited.connect(self.entered_number)
 
@@ -54,7 +54,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
 
     # Greets the user
-    def greetings(self):
+    def roller(self):
         print("Hello")
 
     def advantagef(self):
@@ -78,5 +78,8 @@ if __name__ == '__main__':
     # Create and show the form
     dndcube = MainWindow()
     dndcube.show()
+    with open("style.qss", "r") as f:
+        _style = f.read()
+        app.setStyleSheet(_style)
     # Run the main Qt loop
     sys.exit(app.exec())
