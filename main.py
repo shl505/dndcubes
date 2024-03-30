@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (QCheckBox,
                                QMainWindow,
                                QComboBox,
                                QWidget,
-                               QLineEdit)
+                               QLineEdit, QRadioButton)
 from PySide6.QtCore import QSize
 import PySide6.QtGui
 
@@ -26,15 +26,15 @@ class MainWindow(QMainWindow):
         self.lable = QLabel('d')
         self.combobox1 = QComboBox()
         self.combobox2 = QComboBox()
-        self.advantage_checkbox = QCheckBox(text="advantage")
-        self.disadvantage_checkbox = QCheckBox(text="disadvantage")
         self.lineedit = QLineEdit()
         self.lineedit.setMaxLength(10)
         self.lineedit.setPlaceholderText("Enter a number to plus")
+        self.radio_button1 = QRadioButton("Advantage")
+        self.radio_button2 = QRadioButton("Disadvantage")
+        self.radio_button3 = QRadioButton("None")
 
         # יצירת חיבורים לפונקציות
         self.button.clicked.connect(self.roller)
-        self.advantage_checkbox.stateChanged.connect(self.advantagef)
         self.lineedit.textEdited.connect(self.entered_number)
 
         self.combobox1.addItems(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'])
@@ -44,10 +44,11 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.combobox1)
         layout.addWidget(self.lable)
         layout.addWidget(self.combobox2)
-        layout.addWidget(self.advantage_checkbox)
-        layout.addWidget(self.disadvantage_checkbox)
         layout.addWidget(self.lineedit)
         layout.addWidget(self.button)
+        layout.addWidget(self.radio_button1)
+        layout.addWidget(self.radio_button2)
+        layout.addWidget(self.radio_button3)
         widget = QWidget()
         widget.setLayout(layout)
 
