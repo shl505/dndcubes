@@ -39,6 +39,9 @@ class MainWindow(QMainWindow):
         # יצירת חיבורים לפונקציות
         self.button.clicked.connect(self.roller)
         self.lineedit.textEdited.connect(self.entered_number)
+        self.radio_button1.clicked.connect(self.advantagef)
+        self.radio_button2.clicked.connect(self.disadvantagef)
+        self.radio_button3.clicked.connect(self.no_advantage)
 
         self.combobox1.addItems(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'])
         self.combobox2.addItems(['4', '6', '8', '10', '12', '20', '100'])
@@ -57,17 +60,23 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(widget)
 
-    # Greets the user
+
     def roller(self):
         print("Hello")
 
     def advantagef(self):
-        if self.advantage_checkbox.isChecked() and (self.advantage_or_disadvantage != "False"):
+        if (self.advantage_or_disadvantage != "False"):
             self.advantage_or_disadvantage = "True"
+        print("clicked")
 
     def disadvantagef(self):
-        if self.disadvantage_checkbox.isChecked() and (self.advantage_or_disadvantage != "True"):
+        if (self.advantage_or_disadvantage != "True"):
             self.advantage_or_disadvantage = "False"
+        print("clicked1")
+
+    def no_advantage(self):
+        self.advantage_or_disadvantage = "None"
+        print("None")
 
     def entered_number(self):
         self.plus_number = int(self.lineedit.text())

@@ -26,5 +26,5 @@ MainWindow {
     }
 
 QRadioButton {
-    color: yellow
+    color: white
 }
