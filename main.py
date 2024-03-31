@@ -36,6 +36,7 @@ class MainWindow(QMainWindow):
         self.radio_button1 = QRadioButton("Advantage")
         self.radio_button2 = QRadioButton("Disadvantage")
         self.radio_button3 = QRadioButton("None")
+        self.lable3 = QLabel('outcome')
 
         # יצירת חיבורים לפונקציות
         self.button.clicked.connect(Cube.roll)
@@ -53,6 +54,7 @@ class MainWindow(QMainWindow):
         self.layout.addWidget(self.radio_button1)
         self.layout.addWidget(self.radio_button2)
         self.layout.addWidget(self.radio_button3)
+        self.layout.addWidget(self.lable3)
 
         widget = QWidget()
         widget.setLayout(self.layout)
@@ -95,8 +97,8 @@ class Cube:
                 output = outcome
             else:
                 output = outcome2
-        lable1 = QLabel(str(output + plus_number))
-        dndcube.layout.addWidget(lable1)
+
+        dndcube.lable3.setText(str(output + plus_number))
         return str(output + plus_number)
 
 
