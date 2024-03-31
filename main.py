@@ -23,10 +23,11 @@ class MainWindow(QMainWindow):
         self.advantage_or_disadvantage = "None"
 
         self.setFixedSize(QSize(250, 275))
-        self.setWindowTitle('dnd cubes')
+        self.setWindowTitle('D&D Cubes')
         # Create widgets
         self.button = QPushButton("roll")
         self.lable = QLabel('d')
+        self.lable2 = QLabel('Enter a number to plus')
         self.combobox1 = QComboBox()
         self.combobox2 = QComboBox()
         self.lineedit = QSpinBox()
@@ -46,6 +47,7 @@ class MainWindow(QMainWindow):
         self.layout.addWidget(self.combobox1)
         self.layout.addWidget(self.lable)
         self.layout.addWidget(self.combobox2)
+        self.layout.addWidget(self.lable2)
         self.layout.addWidget(self.lineedit)
         self.layout.addWidget(self.button)
         self.layout.addWidget(self.radio_button1)

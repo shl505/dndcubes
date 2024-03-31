@@ -79,3 +79,7 @@ QSpinBox {
 
 }
 
+QLabel {
+    color: #3333ff;
+}
+
