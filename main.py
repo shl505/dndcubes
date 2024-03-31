@@ -1,19 +1,39 @@
-import sys, os
+import sys, os, random
 
 from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import (QCheckBox,
-                               QPushButton,
+from PySide6.QtWidgets import (QPushButton,
                                QApplication,
                                QLabel,
                                QVBoxLayout,
                                QMainWindow,
                                QComboBox,
                                QWidget,
-                               QLineEdit, QRadioButton)
+                               QRadioButton,
+                               QSpinBox)
 from PySide6.QtCore import QSize
 import PySide6.QtGui
 
 basedir = os.path.dirname(__file__)
+
+class Cube:
+    type_of_cube = 20
+    # אם רגיל אז none, אם יתרון אז true ואם חסרון אז false
+    is_advantage = None
+    plus_number = 0
+    # מספר הקוביות
+    number_cubes = 1
+
+    def roll(self):
+        self.type_of_cube = dndcube.combobox2.currentText()
+        if dndcube.radio_button1.isChecked():
+            self.is_advantage = True
+        elif dndcube.radio_button2.isChecked():
+            self.is_advantage = False
+        elif dndcube.radio_button3.isChecked():
+            self.is_advantage = None
+
+        outcome = random.randint(1, self.type_of_cube)
+        return
 
 class MainWindow(QMainWindow):
 
@@ -29,16 +49,16 @@ class MainWindow(QMainWindow):
         self.img = QLabel()
         self.combobox1 = QComboBox()
         self.combobox2 = QComboBox()
-        self.lineedit = QLineEdit()
-        self.lineedit.setMaxLength(10)
-        self.lineedit.setPlaceholderText("Enter a number to plus")
+        self.lineedit = QSpinBox()
+        self.lineedit.setMaximum(10)
+        self.lineedit.setMinimum(0)
         self.radio_button1 = QRadioButton("Advantage")
         self.radio_button2 = QRadioButton("Disadvantage")
         self.radio_button3 = QRadioButton("None")
 
         # יצירת חיבורים לפונקציות
-        self.button.clicked.connect(self.roller)
-        self.lineedit.textEdited.connect(self.entered_number)
+        self.button.clicked.connect(Cube.roll)
+        self.lineedit.valueChanged.connect(self.entered_number)
         self.radio_button1.clicked.connect(self.advantagef)
         self.radio_button2.clicked.connect(self.disadvantagef)
         self.radio_button3.clicked.connect(self.no_advantage)
@@ -60,7 +80,6 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(widget)
 
-
     def roller(self):
         print("Hello")
 
@@ -79,16 +98,16 @@ class MainWindow(QMainWindow):
         print("None")
 
     def entered_number(self):
-        self.plus_number = int(self.lineedit.text())
-        print(self.plus_number)
+        if type(self.lineedit.text()) == int:
+            self.plus_number = int(self.lineedit.text())
+            print(self.plus_number)
 
 
 if __name__ == '__main__':
     # Create the Qt Application
     app = QApplication(sys.argv)
-    app.setWindowIcon(PySide6.QtGui.QIcon(os.path.join(basedir,'Twenty_sided_dice.png')))
+    app.setWindowIcon(PySide6.QtGui.QIcon(os.path.join(basedir, 'Twenty_sided_dice.png')))
 
-    # Create and show the form
     dndcube = MainWindow()
     dndcube.show()
     with open("style.qss", "r") as f:
@@ -96,3 +115,6 @@ if __name__ == '__main__':
         app.setStyleSheet(_style)
     # Run the main Qt loop
     sys.exit(app.exec())
+
+
+
