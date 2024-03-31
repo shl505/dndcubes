@@ -72,11 +72,10 @@ QComboBox::drop-down {
     border-bottom-right-radius: 3px;
 }
 
-QLineEdit {
-    border: 2px solid gray;
-    border-radius: 10px;
-    padding: 0 8px;
-    background: gray;
-    selection-background-color: darkgray;
+QSpinBox {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #D3D3D3, stop: 0.4 #D8D8D8,
+                                stop: 0.5 #DDDDDD, stop: 1.0 #E1E1E1);
+
 }
 
