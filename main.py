@@ -1,4 +1,6 @@
 import sys, os
+
+from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QCheckBox,
                                QPushButton,
                                QApplication,
@@ -19,11 +21,12 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__(parent)
         self.advantage_or_disadvantage = "None"
 
-        self.setFixedSize(QSize(250, 185))
+        self.setFixedSize(QSize(250, 275))
         self.setWindowTitle('dnd cubes')
         # Create widgets
         self.button = QPushButton("roll")
         self.lable = QLabel('d')
+        self.img = QLabel()
         self.combobox1 = QComboBox()
         self.combobox2 = QComboBox()
         self.lineedit = QLineEdit()

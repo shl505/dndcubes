@@ -18,3 +18,13 @@ QPushButton:flat {
 QPushButton:default {
     border-color: navy; /* make the default button prominent */
 }
+
+MainWindow {
+    background-image: url("Twenty_sided_dice.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    }
+
+QRadioButton {
+    color: yellow
+}
