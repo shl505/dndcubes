@@ -44,7 +44,7 @@ class MainWindow(QMainWindow):
         self.button.clicked.connect(Cube.roll)
 
         self.combobox1.addItems(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'])
-        self.combobox2.addItems(['4', '6', '8', '10', '12', '20', '100'])
+        self.combobox2.addItems(['20', '4', '6', '8', '10', '12', '100'])
 
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.combobox1)

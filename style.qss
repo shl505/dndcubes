@@ -1,14 +1,14 @@
 QPushButton {
-    border: 2px solid #8f8f91;
-    border-radius: 6px;
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
     min-width: 80px;
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #DDDDDD, stop: 0.4 #E1E1E1,
+                                      stop: 0.5 #D3D3D3, stop: 1.0 #D8D8D8);
 }
 
 QPushButton:flat {
