@@ -1,6 +1,6 @@
 import sys, os, random
 
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, QFont
 from PySide6.QtWidgets import (QPushButton,
                                QApplication,
                                QLabel,
@@ -20,6 +20,8 @@ class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
+        self.font = QFont("Times new roman", 12)
+        self.setFont(self.font)
         self.advantage_or_disadvantage = "None"
 
         self.setFixedSize(QSize(250, 275))
