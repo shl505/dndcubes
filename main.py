@@ -107,7 +107,7 @@ class Cube:
 if __name__ == '__main__':
     # Create the Qt Application
     app = QApplication(sys.argv)
-    app.setWindowIcon(PySide6.QtGui.QIcon(os.path.join(basedir, 'Twenty_sided_dice.png')))
+    app.setWindowIcon(PySide6.QtGui.QIcon(os.path.join(basedir, 'D20_icon.ico')))
 
     dndcube = MainWindow()
     dndcube.show()
