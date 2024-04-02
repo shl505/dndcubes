@@ -33,8 +33,8 @@ class MainWindow(QMainWindow):
         self.combobox1 = QComboBox()
         self.combobox2 = QComboBox()
         self.lineedit = QSpinBox()
-        self.lineedit.setMaximum(10)
-        self.lineedit.setMinimum(0)
+        self.lineedit.setMaximum(30)
+        self.lineedit.setMinimum(-5)
         self.radio_button1 = QRadioButton("Advantage")
         self.radio_button2 = QRadioButton("Disadvantage")
         self.radio_button3 = QRadioButton("None")
@@ -42,8 +42,8 @@ class MainWindow(QMainWindow):
 
         # יצירת חיבורים לפונקציות
         self.button.clicked.connect(Cube.roll)
-
-        self.combobox1.addItems(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'])
+        for i in range(1, 100):
+            self.combobox1.addItem(str(i))
         self.combobox2.addItems(['20', '4', '6', '8', '10', '12', '100'])
 
         self.layout = QVBoxLayout()
@@ -107,7 +107,7 @@ class Cube:
 if __name__ == '__main__':
     # Create the Qt Application
     app = QApplication(sys.argv)
-    app.setWindowIcon(PySide6.QtGui.QIcon(os.path.join(basedir, 'D20_icon.ico')))
+    app.setWindowIcon(PySide6.QtGui.QIcon(os.path.join(basedir, 'Twenty_sided_dice.ico')))
 
     dndcube = MainWindow()
     dndcube.show()
